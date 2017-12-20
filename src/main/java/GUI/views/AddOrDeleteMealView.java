@@ -64,7 +64,7 @@ public class AddOrDeleteMealView extends Scene {
     }
 
     private void setUpBorderPane() {
-        HBox nameLabelAndField = new HBox(10);
+        HBox nameLabelAndField = new HBox(16);
         HBox descriptionLabelAndField = new HBox(26);
         HBox costLabelAndField = new HBox(20);
         HBox buttons = new HBox(10);
