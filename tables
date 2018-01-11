@@ -1,0 +1,250 @@
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE categories;
+DROP TABLE menu;
+SET FOREIGN_KEY_CHECKS=1;
+
+CREATE TABLE
+  categories
+(
+  category VARCHAR(50) NOT NULL,
+  lang VARCHAR(50) NOT NULL,
+  PRIMARY KEY (category,lang)
+);
+
+insert into
+    categories(category,lang)
+  VALUES
+    ('Pizza','pl'),('Sosy','pl'),('Dodatki do pizzy','pl'),('Pasty','pl'),('Zestawy obiadowe','pl'),('Ryby smazone','pl'),('Zupy','pl'),
+    ('Surowki','pl'),('Pierogi','pl'),('Dodatki','pl'),('Napoje cieple','pl'),('Napoje zimne','pl'),('Piwo','pl'),('Pizza','en'),('Souces','en'),
+    ('Pizza addings','en'),('Pastas','en'),('Dinner sets','en'),('Fish','en'),('Soup','en'),('Salads','en'),('Dumplings','en'),('Side dishes','en'),
+    ('Hot drinks','en'),('Cold drinks','en'),('Beer','en');
+
+select * from categories;
+
+
+CREATE TABLE
+  menu
+(
+  category    VARCHAR(50) NOT NULL,
+  name        VARCHAR(50) NOT NULL,
+  description VARCHAR(100),
+  cost        DECIMAL(6, 2),
+  lang VARCHAR(50) NOT NULL,
+  FOREIGN KEY (category,lang) REFERENCES categories (category,lang)
+  ON DELETE CASCADE 
+);
+
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Pizza', 'Margherita', 'sos, ser, oregano', 12.00,'pl'),
+  ('Pizza', 'Funghi', 'sos, ser, pieczarki, oregano', 13.00,'pl'),
+  ('Pizza', 'Vezuvio', 'sos, ser, szynka, oregano', 14.00,'pl'),
+  ('Pizza', 'Neapolitana', 'sos, ser, cebula, pieczarki, oregano', 15.00,'pl'),
+  ('Pizza', 'Capriciosa', 'sos, ser, szynka, pieczarki,oregano', 15.00,'pl'),
+  ('Pizza', 'Hawaii', 'sos, ser, szynka, ananas, oregano', 15.00,'pl'),
+  ('Pizza', 'Peperoni', 'sos, ser, cebula, salami peperoni, papryka peperoni, oregano', 16.00,'pl'),
+  ('Pizza', 'Margherita', 'tomato souce, cheese, oregano', 12.00,'en'),
+  ('Pizza', 'Funghi', 'tomato souce, cheese, mushrooms, oregano', 13.00,'en'),
+  ('Pizza', 'Vezuvio', 'tomato souce, cheese, ham, oregano', 14.00,'en'),
+  ('Pizza', 'Neapolitana', 'tomato souce, cheese, onion, mushrooms, oregano', 15.00,'en'),
+  ('Pizza', 'Capriciosa', 'tomato souce, cheese, ham, mushrooms,oregano', 15.00,'en'),
+  ('Pizza', 'Hawaii', 'tomato souce, cheese, ham, pineapple, oregano', 15.00,'en'),
+  ('Pizza', 'Peperoni', 'tomato souce, cheese, onion, pepperoni, pepperoni paprika, oregano', 16.00,'en');
+
+INSERT INTO
+  menu (category, name, description, cost,lang)
+VALUES
+  ('Sosy', 'Sos chili pikantny', NULL, 2.50,'pl'),
+  ('Sosy', 'Sos czosnkowy', NULL, 2.50,'pl'),
+  ('Sosy', 'Sos tzatziki', NULL, 2.50,'pl'),
+  ('Sosy', 'Sos tysiaca wysp', NULL, 2.50,'pl'),
+  ('Sosy', 'Sos BBQ', NULL, 4.00,'pl'),
+  ('Sosy', 'Ketchup', NULL, 2.00,'pl'),
+  ('Souces', 'Hot chili souce', NULL, 2.50,'en'),
+  ('Souces', 'Garlic souce', NULL, 2.50,'en'),
+  ('Souces', 'Tzatziki souce', NULL, 2.50,'en'),
+  ('Souces', 'Thousand Island souce', NULL, 2.50,'en'),
+  ('Souces', 'BBQ souce', NULL, 4.00,'en'),
+  ('Souces', 'Ketchup', NULL, 2.00,'en');
+
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Dodatki do pizzy', 'Warzywne', NULL, 3.00,'pl'),
+  ('Dodatki do pizzy', 'Miesne, ser', NULL, 3.50,'pl'),
+  ('Dodatki do pizzy', 'Krewetki, owoce morza', NULL, 5.50,'pl'),
+  ('Dodatki do pizzy', 'Opakowanie na wynos', NULL, 1.00,'pl'),
+  ('Pizza addings', 'Vegetables', NULL, 3.00,'en'),
+  ('Pizza addings', 'Meat, cheese', NULL, 3.50,'en'),
+  ('Pizza addings', 'Shripms, Seafood', NULL, 5.50,'en'),
+  ('Pizza addings', 'Take-out container', NULL, 1.00,'en');
+
+
+INSERT INTO
+  menu (category, name, description, cost,lang)
+VALUES
+  ('Pasty', 'Tagiatelle', 'z lososiem', 22.00,'pl'),
+  ('Pasty', 'Tagiatelle', 'z poledwiczka wieprzowa', 22.00,'pl'),
+  ('Pasty', 'Spaghetti Bolognese', NULL, 22.00,'pl'),
+  ('Pasty', 'Tagiatelle aglio,olio e peperon cino', 'lekko pikantne z krewetkami, czosnkiem, chili i pietruszka',
+   22.00,'pl'),
+  ('Pasty', 'Spaghetti spinaci', 'z szynka i szpinakiem', 20.00,'pl'),
+  ('Pasty', 'Penne', 'z kurczakiem i brokulami w sosie mascarpone', 22.00,'pl'),
+  ('Pastas', 'Tagiatelle', 'with salmon', 22.00,'en'),
+  ('Pastas', 'Tagiatelle', 'with pork loin', 22.00,'en'),
+  ('Pastas', 'Spaghetti Bolognese', NULL, 22.00,'en'),
+  ('Pastas', 'Tagiatelle aglio,olio e peperon cino', 'with shrimps, garlic, chili and parsley',
+   22.00,'en'),
+  ('Pastas', 'Spaghetti spinaci', 'with ham and spinach', 20.00,'en'),
+  ('Pastas', 'Penne', 'with chicken and broccoli in mascarpone souce', 22.00,'en');
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Zestawy obiadowe', 'Schab panierowany', 'frytki, bukiet surowek', 22.00,'pl'),
+  ('Zestawy obiadowe', 'Schab z pieczarkami', 'frytki, bukiet surowek', 24.00,'pl'),
+  ('Zestawy obiadowe', 'Sakwa z kurczaka faszerowana szpinakiem i feta', 'frytki, bukiet surowek', 24.00,'pl'),
+  ('Zestawy obiadowe', 'Devolaille', 'piersz kurczaka zawijana, frytki, bukiet surowek', 23.00,'pl'),
+  ('Zestawy obiadowe', 'Piers z kurczaka', 'panierowana, frytki, bukiet surowek', 22.00,'pl'),
+  ('Zestawy obiadowe', 'McNugets', '6 kawalkow kurczaka w panierce, frytki, bukiet surowek', 20.00,'pl'),
+  ('Dinner sets', 'Pork chop', 'chips, mix of salads', 22.00,'en'),
+  ('Dinner sets', 'Pork chop with mushrooms', 'chips, mix of salads', 24.00,'en'),
+  ('Dinner sets', 'Pouch of chicken with spinach and feta cheese', 'chips, mix of salads', 24.00,'en'),
+  ('Dinner sets', 'Devolaille', 'rolled chicken breast,chips, mix of salads', 23.00,'en'),
+  ('Dinner sets', 'Chicken breast', 'crumbed, chips, mix of salads', 22.00,'en'),
+  ('Dinner sets', 'McNugets', '6 pieces of crumbed chicken, chips, mix of salads', 20.00,'en');
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Ryby smazone', 'Dorsz', 'filet', 7.00, 'pl'),
+  ('Ryby smazone', 'Dorsz', 'filet w zielonym sosie porowo-koperkowym', 9.00,'pl'),
+  ('Ryby smazone', 'Dorsz', 'filet po kaszubsku (z maslem czosnkowym)', 8.00,'pl'),
+  ('Ryby smazone', 'Fladra', 'tusza', 6.00,'pl'),
+  ('Ryby smazone', 'Fladra', 'filet w ciescie', 7.00,'pl'),
+  ('Ryby smazone', 'Pstrag', 'tusza', 7.00,'pl'),
+  ('Ryby smazone', 'losos', 'filet', 12.00,'pl'),
+  ('Ryby smazone', 'losos', 'filet zapiekany w ziolach z serem', 14.00,'pl'),
+  ('Ryby smazone', 'losos', 'filet w zielonym sosie porowo-koperkowym', 13.50,'pl'),
+  ('Fish', 'Cod', 'fillet', 7.00,'en'),
+  ('Fish', 'Cod', 'fillet in green pore dill souce', 9.00,'en'),
+  ('Fish', 'Cod', 'fillet with garlic butter', 8.00,'en'),
+  ('Fish', 'Flounder', 'carcase', 6.00,'en'),
+  ('Fish', 'Flounder', 'fillet in cake', 7.00,'en'),
+  ('Fish', 'Trout', 'carcase', 7.00,'en'),
+  ('Fish', 'Salmon', 'fillet', 12.00,'en'),
+  ('Fish', 'Salmon', 'baked fillet with cheese and herbs', 14.00,'en'),
+  ('Fish', 'Salmon', 'fillet in green pore dill souce', 13.50,'en');
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Zupy', 'Zupa rybna', 'wegierska pikantna', 10.00,'pl'),
+  ('Zupy', 'Zupa rybna', 'zabielana lagodna', 10.00,'pl'),
+  ('Zupy', 'Rosol', 'domowy z makaronem', 6.00,'pl'),
+  ('Zupy', 'zurek', 'w chlebie', 12.00,'pl'),
+  ('Zupy', 'Pomidorowa', 'z makaronem', 6.50,'pl'),
+  ('Zupy', 'Barszcz', 'czerwony z uszkami', 8.00,'pl'),
+  ('Soup', 'Fish soup', 'hungarian hot', 10.00,'en'),
+  ('Soup', 'Fish soup', 'bland', 10.00,'en'),
+  ('Soup', 'Chicken soup', 'with noodles', 6.00,'en'),
+  ('Soup', 'Sour flour-based soup', 'in bread', 12.00,'en'),
+  ('Soup', 'Tomato soup', 'with noodles', 6.50,'en'),
+  ('Soup', 'Beet soup', 'with dumplings', 8.00,'en');
+
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Surowki', 'Bukiet surowek', NULL, 6.00,'pl'),
+  ('Surowki', 'Z bialej kapusty', NULL, 5.00,'pl'),
+  ('Surowki', 'Z czerwonej kapusty', NULL, 5.00,'pl'),
+  ('Surowki', 'Pomidor z ogorkiem', 'w smietanie', 7.00,'pl'),
+  ('Surowki', 'Z selera', NULL, 5.50,'pl'),
+  ('Salads', 'Mix of salads', NULL, 6.00,'en'),
+  ('Salads', 'White cabbage', NULL, 5.00,'en'),
+  ('Salads', 'Red cabbage', NULL, 5.00,'en'),
+  ('Salads', 'Tomato and cucumber', 'with cream', 7.00,'en'),
+  ('Salads', 'Celery', NULL, 5.50,'en');
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Pierogi', 'Ruskie', '6 sztuk', 15.00, 'pl'),
+  ('Pierogi', 'Z kapusta i grzybami', '6 sztuk', 15.00, 'pl'),
+  ('Pierogi', 'Z miesem', '6 sztuk', 15.00, 'pl'),
+  ('Pierogi', 'Z serem ismietana', '6 sztuk', 15.00, 'pl'),
+  ('Dumplings', 'Cheese and potato', '6 pieces', 15.00,'en'),
+  ('Dumplings', 'With cabbage and mushrooms', '6 pieces', 15.00,'en'),
+  ('Dumplings', 'With meat', '6 pieces', 15.00,'en'),
+  ('Dumplings', 'With cheese and cream', '6 pieces', 15.00,'en');
+
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Dodatki', 'Frytki', NULL, 7.00, 'pl'),
+  ('Dodatki', 'Ziemniaki gotowane', 'tluczone', 6.00,'pl'),
+  ('Dodatki', 'Ziemniaki zapiekane', 'z ziolami', 7.00,'pl'),
+  ('Dodatki', 'Pieczywo', NULL, 2.00,'pl'),
+  ('Dodatki', 'Kapusta', 'smazona', 7.00,'pl'),
+  ('Side dishes', 'Chips', NULL, 7.00,'en'),
+  ('Side dishes', 'Boiled potatoes', 'mashed', 6.00,'en'),
+  ('Side dishes', 'Baked potatoes', 'with herbs', 7.00,'en'),
+  ('Side dishes', 'Bread', NULL, 2.00,'en'),
+  ('Side dishes', 'Cabbage', 'fried', 7.00,'en');
+
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Napoje cieple', 'Kawa espresso', NULL, 5.00, 'pl'),
+  ('Napoje cieple', 'Kawa espresso macchiato', NULL, 6.00,'pl'),
+  ('Napoje cieple', 'Cappuccino', NULL, 8.00,'pl'),
+  ('Napoje cieple', 'Americano', NULL, 7.00,'pl'),
+  ('Napoje cieple', 'Caffe latte macchiato', NULL, 9.00,'pl'),
+  ('Napoje cieple', 'Herbata', 'zwykla, zielona, owocowa: malinowa, truskawkowa, cytrynowa', 7.00,'pl'),
+  ('Hot drinks', 'Espresso', NULL, 5.00,'en'),
+  ('Hot drinks', 'Espresso macchiato', NULL, 6.00,'en'),
+  ('Hot drinks', 'Cappuccino', NULL, 8.00,'en'),
+  ('Hot drinks', 'Americano', NULL, 7.00,'en'),
+  ('Hot drinks', 'Caffe latte macchiato', NULL, 9.00,'en'),
+  ('Hot drinks', 'Tea', 'earl-gray, green, fruity: raspberry, strawberry, lemon', 7.00,'en');
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Napoje zimne', 'Napoje gazowane', 'coca-cola, coca-cola zero, fanta, sprite', 5.00, 'pl'),
+  ('Napoje zimne', 'Woda mineralna', 'gazowana, niegazowana', 4.00, 'pl'),
+  ('Napoje zimne', 'Nestea', 'brzoskwiniowa, zielona z mieta, cytrynowa', 4.50,'pl'),
+  ('Cold drinks', 'Carbonated drinks', 'coca-cola, coca-cola zero, fanta, sprite', 5.00,'en'),
+  ('Cold drinks', 'Mineral water', 'carbonated, non-carbonated', 4.00,'en'),
+  ('Cold drinks', 'Nestea', 'peach, green with mint, lemon', 4.50,'en');
+
+
+INSERT INTO
+  menu (category, name, description, cost, lang)
+VALUES
+  ('Piwo', 'Ksiazece czerwony lagier', 'lane', 7.00, 'pl'),
+  ('Piwo', 'Tyskie', 'lane', 7.00,'pl'),
+  ('Piwo', 'Lech', 'butelka', 7.00,'pl'),
+  ('Piwo', 'Lech free', 'butelka', 6.00,'pl'),
+  ('Piwo', 'zubr', 'butelka', 7.00,'pl'),
+  ('Beer', 'Ksiazece czerwony lagier', 'draft', 7.00,'en'),
+  ('Beer', 'Tyskie', 'draft', 7.00,'en'),
+  ('Beer', 'Lech', 'bottle', 7.00,'en'),
+  ('Beer', 'Lech free', 'bottle', 6.00,'en'),
+  ('Beer', 'Zubr', 'bottle', 7.00,'en');
+
