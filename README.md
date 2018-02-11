@@ -13,3 +13,20 @@ BillingSystem is educational project for managing restaurant. The idea was to cr
 * MVP-like code orgamization
 
 ## Views: 
+![alt tag](src/main/resources/files/screenshots/1.png)
+
+![alt tag](src/main/resources/files/screenshots/2.jpg)
+
+![alt tag](src/main/resources/files/screenshots/3.jpg)
+
+![alt tag](src/main/resources/files/screenshots/4.jpg)
+
+![alt tag](src/main/resources/files/screenshots/5.jpg)
+
+![alt tag](src/main/resources/files/screenshots/6.jpg)
+
+![alt tag](src/main/resources/files/screenshots/7.jpg)
+
+![alt tag](src/main/resources/files/screenshots/8.jpg)
+
+![alt tag](src/main/resources/files/screenshots/9.jpg)
