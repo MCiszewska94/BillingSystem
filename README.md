@@ -30,3 +30,7 @@ BillingSystem is educational project for managing restaurant. The idea was to cr
 ![alt tag](src/main/resources/files/screenshots/8.jpg)
 
 ![alt tag](src/main/resources/files/screenshots/9.jpg)
+
+
+## Resources: 
+Images taken from http://www.wallpapers4u.org/
